@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>轮播图</title>
+		<style type="text/css">
+			#div{
+				position: relative;
+				width: 700px;
+
+			}
+			#div1{
+				width: 700px;
+				height: 1244px;
+				border: 1px solid green;
+				overflow: hidden;
+			}
+			img
+			{
+				width: 700px;
+				height: 1244px;
+			}
+		
+			li
+			{
+				width: 25px;
+				height: 25px;
+				display: inline-block;
+				border: 1px solid cadetblue;
+				position: relative;
+				top: 800px;
+				margin: 0 20px;
+			}
+			ul
+			{
+				position: absolute;
+				top: 300px;
+				padding-left:20px ;
+				
+			}
+			li
+			{
+				
+				width: 20px;
+				height: 20px;
+				border-radius: 50px;
+				color: white;
+				font-size:14px ;
+				background-color: rgba(0,0,0,0);
+				text-align: center;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">
+			<div id="div1">
+			<img src="image/5.jpeg" />
+			<img src="image/6.jpeg"  />
+			<img src="image/7.jpg"  />
+			<img src="image/8.jpg"  />
+			<img src="image/8.jpg"  />
+			<img src="image/7.jpg"  />
+			<img src="image/6.jpeg"  />
+			<img src="image/5.jpeg"  />
+		</div>
+		<ul>
+			<li style="background-color: cadetblue;" onclick="chock(0)">1</li>
+			<li onclick="chock(1)">2</li>
+			<li onclick="chock(2)">3</li>
+			<li onclick="chock(3)">4</li>
+			<li onclick="chock(4)">5</li>
+			<li onclick="chock(5)">6</li>
+			<li onclick="chock(6)">7</li>
+			<li onclick="chock(7)">8</li>
+		</ul>
+				
+		
+		</div>
+		<script type="text/javascript">
+
+			var img = document.getElementsByTagName('img');
+			var li = document.getElementsByTagName('li');
+			var i = 1 ;
+			
+			var time1 = setInterval(function(){stary(i);
+				i++;
+				if(i >= img.length ){
+					i = 0;
+				}
+			},2000);
+			function stary(i)
+			{
+				
+				var op = 30;
+				var time =  setInterval(function(){
+				op++;
+				for(var n = 0 ; n< img.length;n++){
+					img[n].style.opacity = op /100;
+				}
+				if(op >= 100)
+				{
+					clearInterval(time);	
+				}
+				},10);
+				
+				
+				for(var n = 0 ; n< img.length;n++){
+					img[n].style.display = "none";
+					li[n].style.backgroundColor = 'rgba(0,0,0,0)';
+				}
+				img[i].style.display = "block";
+				li[i].style.backgroundColor = 'cadetblue';
+				
+				
+			}
+			
+			
+			//切换
+			function chock(a){
+				clearInterval(time1);
+				
+				
+				for(var n = 0 ; n< img.length;n++){
+					img[n].style.display = "none";
+					li[n].style.backgroundColor = 'rgba(0,0,0,0)';
+				}
+				img[a].style.display = "block";
+				li[a].style.backgroundColor = 'cadetblue';
+	
+				time1 = setInterval(function(){
+					
+					stary(a);
+					a++;
+					if(a >= img.length ){
+					a = 0;
+					}
+				},2000);
+				
+			}
+//			for(var c = 0 ; c <li.length ; c++ ){
+//				
+//				li[c].onclick = function()
+//				{
+//					var index = c;
+//					for(var n = 0 ; n< img.length;n++){
+//						img[n].style.display = "none";
+//						li[n].style.backgroundColor = 'rgba(0,0,0,0)';
+//					}
+//					this.style.backgroundColor = 'cadetblue';
+//					img[index].style.display = "block";
+//				}
+//			}
+				
+				
+		</script>
+	</body>
+</html>
