@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<svg id="s1" width="1000" height="1000" style="background-color: pink;">
+			<!--<circle id="c1" r="100" cx="200" cy="200" fill="red" fill-opacity="0.5"></circ-->le>
+			
+			
+		</svg>
+		
+		<script>
+			//大小
+			
+			function random(){
+			
+			}
+			for(var i = 0;i<=30;i++){
+			random();
+			var c= document.createElementNS("http://www.w3.org/2000/svg","circle");
+	
+				var r = 10+Math.floor(Math.random()*50);
+			//位置
+			var weizhi = 10+Math.floor(Math.random()*890);
+			var weizhi1 = 10+Math.floor(Math.random()*850);
+			var opacity = 0.1+Math.random(); 
+			var r1 = Math.random()*255;
+			var g =Math.random()*255;
+			var b = Math.random()*255;
+			var rgb = "rgb("+r1+","+g+","+b+")";
+			c.setAttribute("r",r);
+			c.setAttribute("cx",weizhi);
+			c.setAttribute("cy",weizhi1);
+			c.setAttribute("fill",rgb);
+			c.setAttribute("fill-opacity",opacity);
+			var s1 = document.getElementById("s1");
+			s1.appendChild(c);
+			c.onclick=function(){
+				this.onclick=null;
+				var t = setInterval(()=>{
+					var r = this.getAttribute("r");
+					this.setAttribute("r",r*1.05);
+					var o = this.getAttribute("fill-opacity");
+					this.setAttribute("fill-opacity",o*0.8);
+					if(o<0.05){
+						s1.removeChild(this);
+						clearInterval(t);
+					}
+					
+				},50)
+			}
+			}
+			
+		</script>
+		
+	</body>
+</html>
