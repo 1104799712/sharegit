@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		body{
+			text-align: center;
+		}
+		
+	</style>
+	<body>
+		<svg id="s1" width="500" height="500" style="background-color: gray;">
+			
+			
+		</svg>
+		<script>
+			//js对象动态创建
+			//第一个参数是w3的标准 ，第二个是图形
+			var rect = document.createElementNS("http://www.w3.org/2000/svg","rect");
+//			rect.setAttribute("x",0);rect.setAttribute("y",0);
+//			rect.setAttribute("width",100);
+//			rect.setAttribute("height",80);
+//			rect.setAttribute("fill","#abcdef");
+//
+//			//3.节点拼接
+//			var s1 = document.getElementById("s1");
+//			s1.appendChild(rect);
+		rect.setAttribute('x',235);
+		rect.setAttribute("y",100);
+		rect.setAttribute("width",30);
+		rect.setAttribute("height",300);
+		rect.setAttribute("fill","#faa");
+			rect.setAttribute("fill-opacity",0.5);
+				rect.setAttribute("stroke","#800");
+					rect.setAttribute("stroke-opacity",0.5);
+					
+		var s1 = document.getElementById("s1");
+		s1.appendChild(rect);
+		s1.onmouseover=function(){
+			rect.setAttribute("fill-opacity",1);
+			rect.setAttribute("stroke-opacity",1);
+
+		}
+		
+		s1.onmouseout=function(){
+			rect.setAttribute("fill-opacity",0.5);
+			rect.setAttribute("stroke-opacity",0.5);
+
+		}
+		</script>
+		
+	</body>
+</html>
